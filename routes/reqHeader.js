@@ -20,7 +20,8 @@ router.get('/', function (req, res, next) {
       console.log(`Found match, group ${groupIndex}: ${match}`);
     });
   }
-  res.send({ip: req.ip, language: req.headers['accept-language'], os: arr[2], browser: arr[arr.length-1]});
+  console.log(req.headers)
+  res.send({ip: req.headers['x-forwarded-for'], language: req.headers['accept-language'], os: arr[2], browser: arr[arr.length-1]});
 });
 
 module.exports = router;
